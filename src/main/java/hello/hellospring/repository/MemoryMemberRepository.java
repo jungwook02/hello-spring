@@ -1,8 +1,11 @@
 package hello.hellospring.repository;
 
 import hello.hellospring.domain.Member;
+import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.*;
+
 
 public class MemoryMemberRepository implements MemberRepository {
 
@@ -17,11 +20,7 @@ public class MemoryMemberRepository implements MemberRepository {
         return member;
     }
 
-    @Override
-    public Optional<Member> findByID(Long id) {
-        return Optional.ofNullable(store.get(id));
 
-    }
 
     @Override
     public Optional<Member> findByName(String name) {
@@ -29,6 +28,12 @@ public class MemoryMemberRepository implements MemberRepository {
                 .filter(member -> member.getName().equals(name))
                 .findAny();
     }
+
+    @Override
+    public Optional<Member> findById(Long id) {
+        return Optional.empty();
+    }
+
 
     @Override
     public List<Member> findAll() {

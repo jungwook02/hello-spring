@@ -28,7 +28,7 @@ class MemoryMemberRepositoryTest {
 
         repository.save(member);
         // Optional 형식은 get으로 받을 수 있음
-        Member result = repository.findByID(member.getId()).get();
+        Member result = repository.findById(member.getId()).get();
         // 최근에는 이게 더 많이 쓰임 -> member = result랑 같다는 의미
         assertThat(member).isEqualTo(result);
         //System.out.println("result = "+ (result == member));
